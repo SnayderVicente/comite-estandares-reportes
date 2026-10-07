@@ -1,45 +1,47 @@
-# COMITÉ DE ESTÁNDARES: GENERACIÓN DE REPORTES Y EXPORTACIÓN DE DATOS (PDF / Excel / CSV)
-**Proyecto:** PRS04 - SIGRC (Sistema Integrado de Gestión y Registro Clínico)  
-**Institución:** Instituto de Educación Superior Valle Grande  
-**Auditoría de Componentes:** `vg-ms-therapies` (Backend Spring Boot WebFlux) y `vg-web-sigrc` (Frontend Angular)
+# Comité de Estándares: Reportes y Exportación de Datos
+
+**Proyecto:** PRS04 - SIGRC  
+**Instituto:** Valle Grande  
+**Componentes revisados:** `vg-ms-therapies` (Backend) y `vg-web-sigrc` (Frontend)  
 
 ---
 
-## 🔗 Enlace Oficial a la Hoja de Cálculo
-- **Google Sheets (En vivo):** [Abrir metricas_reportes en Google Sheets](https://docs.google.com/spreadsheets/d/12E1OdZqn3ZDSasf_8IGkvfK_FIxXD2BQ/edit?usp=sharing)
-  - Incluye las 5 pestañas reglamentarias: `Resumen` (Dashboard 100% Cumple), `Checklist PR`, `Datos`, `Métricas` y `Reglas`.
+Repositorio de trabajo del **Comité de Estándares de Generación de Reportes y Exportación de Datos (PDF / Excel / CSV)**. Aquí se encuentra el checklist de cumplimiento técnico del estándar y la automatización desarrollada para auditar el código y generar el reporte de métricas.
 
 ---
 
-## Estructura de Entregables del Comité
+## 📊 Hoja de Cálculo en Google Sheets
 
-Esta carpeta contiene los entregables oficiales e independientes del Comité de Estándares:
+El reporte con el dashboard y el checklist completo se puede consultar en el siguiente enlace:
 
-1. **`CHECKLIST_ESTANDAR_REPORTES.md`**: *(Entregable 1 - Smartdown/Markdown)*
-   - Matriz formal de 12 ítems del estándar con referencias (§2 a §18), evidencias de código, responsables y fechas.
-
-2. **`checklist_estandar_reportes.html`**: *(Entregable 1 - Instrumento Interactivo Web)*
-   - Aplicación web autónoma con diseño UI moderno, dashboard en tiempo real, KPIs dinámicos, filtros por estado, búsqueda y exportación a JSON, CSV e impresión.
-
-3. **`AGENTE_IA_ENTRENAMIENTO.md`**: *(Entregable 2 - Documento de Entrenamiento y Arquitectura)*
-   - Especificación completa del Agente de IA (`ReportStandardsAuditAgent`), System Prompt, cadena de razonamiento (Chain-of-Thought) y ejemplos Few-Shot de inferencia.
-
-4. **`audit_agent.py`**: *(Entregable 2 - Motor Ejecutable del Agente de IA)*
-   - Script en Python que audita automáticamente el código de los microservicios y compila el reporte.
-
-5. **`metricas_reportes.xlsx`**: *(Entregable 2 - Hoja de Cálculo Oficial Generada)*
-   - Libro Excel con las 5 pestañas oficiales: `Resumen`, `Checklist PR`, `Datos`, `Métricas` y `Reglas`, con fórmulas de Excel nativas y estilos corporativos.
+👉 **[Abrir métricas y checklist en Google Sheets](https://docs.google.com/spreadsheets/d/12E1OdZqn3ZDSasf_8IGkvfK_FIxXD2BQ/edit?usp=sharing)**  
+*(Contiene las 5 pestañas: Resumen, Checklist PR, Datos, Métricas y Reglas).*
 
 ---
 
-## Cómo Ejecutar el Agente de IA
+## Entregables del Comité
+
+### 1. Checklist de Cumplimiento del Estándar (Entregable 1 - 5 pts)
+- **`CHECKLIST_ESTANDAR_REPORTES.md`**: Matriz en Markdown con los 12 criterios evaluados del estándar (§2 al §18), detallando el estado, responsable y la ubicación exacta de las evidencias en el código.
+- **`checklist_estandar_reportes.html`**: Instrumento interactivo en HTML. Permite abrir la matriz en el navegador, ver el porcentaje de avance, filtrar por estado y consultar las evidencias de forma visual.
+
+### 2. Agente de IA y Automatización (Entregable 2 - 5 pts)
+- **`AGENTE_IA_ENTRENAMIENTO.md`**: Documento de configuración y entrenamiento del agente (`ReportStandardsAuditAgent`), donde se definen su prompt del sistema, las reglas de validación y la lógica para auditar el repositorio.
+- **`audit_agent.py`**: Script en Python que recorre los archivos del proyecto, valida las reglas del estándar (dependencias no bloqueantes, seguridad JWT, precisión en montos, nombres de archivos) y genera el archivo Excel con las fórmulas calculadas.
+- **`metricas_reportes.xlsx`**: Hoja de cálculo generada por el script con las 5 pestañas y fórmulas nativas de cálculo.
+
+---
+
+## Cómo ejecutar la auditoría
+
+Para correr el script y generar o actualizar el reporte en Excel:
 
 ```bash
-# 1. Instalar dependencia requerida (si no está instalada)
+# Instalar librería requerida
 pip install openpyxl
 
-# 2. Ejecutar la auditoría automatizada
+# Ejecutar el script de auditoría
 python audit_agent.py
-
-# El agente auditará los componentes y actualizará automáticamente 'metricas_reportes.xlsx'
 ```
+
+Al terminar, el script revisará el código y actualizará el archivo `metricas_reportes.xlsx` con los resultados de la revisión.
